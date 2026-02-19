@@ -35,11 +35,24 @@ This guide explains how to set up **Meta Marketing API** access for **one Busine
    - (Optional) Set **App Domains** if you use web-based OAuth/redirects
    - (Optional) Add **Valid OAuth Redirect URIs** if you plan to run OAuth later
 
-**Screenshot placeholder**: Marketing API product added to the app
+![Add Marketing API product](images/Add_a_product.png)
 
 ---
 
-## 2) Add the App to your Business Manager (Business Settings)
+## 2) Associate the App with the correct Business Manager (Marketing API Settings)
+
+Meta requires your app to be associated with a Business Manager for some Business-related API use cases.
+
+1. In your app dashboard (`developers.facebook.com`), open **Marketing API** → **Settings**
+2. In the **Business Manager** section, click **Select a Business Manager**
+3. Choose the Business Manager that owns (or has access to) your ad accounts and page
+4. Save changes
+
+![Associate your app with business](images/Associate_your_app_with_business.png)
+
+---
+
+## 3) Add the App to your Business Manager (Business Settings)
 
 If your app is already in the Business Manager, you can just verify it in step 2.3.
 
@@ -47,11 +60,11 @@ If your app is already in the Business Manager, you can just verify it in step 2
 2. Go to **Accounts** → **Apps** (menu names vary by UI locale/version)
 3. Verify your app appears in the list
 
-**Screenshot placeholder**: Business Settings → Apps list with your app visible
+> Screenshot: Business Settings → Apps list with your app visible
 
 ---
 
-## 3) Create a System User (Business Settings)
+## 4) Create a System User (Business Settings)
 
 1. In **Business Settings**, go to **Users** → **System Users**
 2. Click **Add**
@@ -63,13 +76,13 @@ If your app is already in the Business Manager, you can just verify it in step 2
    - `campaign-generator-system-user`
 5. Save
 
-**Screenshot placeholder**: System Users screen (Add System User dialog)
+![Add System User](images/add_system_user.webp)
 
 ---
 
-## 4) Assign Assets (Ad Accounts + Page) to the System User
+## 5) Assign Assets (Ad Accounts + Page + App) to the System User
 
-### 4.1 Assign Ad Accounts
+### 5.1 Assign Ad Accounts
 
 1. In **Business Settings** → **Users** → **System Users**
 2. Select your System User
@@ -80,9 +93,9 @@ If your app is already in the Business Manager, you can just verify it in step 2
    - Typically **Manage ad account** (needed for create/update campaigns/ad sets/ads)
 7. Save
 
-**Screenshot placeholder**: Assign Ad Accounts to System User + permissions
+![Assign Ad Accounts](images/Assign_Assets_Ad_Accounts.png)
 
-### 4.2 Assign the Facebook Page
+### 5.2 Assign the Facebook Page
 
 1. Still on the System User, click **Add Assets** / **Assign Assets**
 2. Choose **Pages**
@@ -91,13 +104,25 @@ If your app is already in the Business Manager, you can just verify it in step 2
    - Typically **Full control** / **Manage Page** (wording varies)
 5. Save
 
-**Screenshot placeholder**: Assign Page to System User + permissions
+![Assign Page](images/Assign_Assets_Page.png)
+
+### 5.3 Assign the App (recommended)
+
+To avoid permission issues, assign the app itself to the System User.
+
+1. Still on the System User, click **Add Assets** / **Assign Assets**
+2. Choose **Apps**
+3. Select your app
+4. Grant the required permissions (usually **Manage** / **Full control**, wording varies)
+5. Save
+
+![Assign App](images/Assign_Assets_App.png)
 
 > Note: If your ad creation flow uses Instagram identity, also assign the **Instagram account** under Business Settings → Accounts → Instagram accounts (if applicable).
 
 ---
 
-## 5) Generate a System User Access Token
+## 6) Generate a System User Access Token
 
 1. In **Business Settings** → **Users** → **System Users**
 2. Select your System User
@@ -116,7 +141,7 @@ If your app is already in the Business Manager, you can just verify it in step 2
 
 ---
 
-## 6) Validate the Token (recommended)
+## 7) Validate the Token (recommended)
 
 Use Graph API Explorer:
 
@@ -133,7 +158,7 @@ If `/me/adaccounts` returns the expected ad accounts, the setup is correct.
 
 ---
 
-## 7) Production Checklist (recommended)
+## 8) Production Checklist (recommended)
 
 - **Do not commit tokens** to Git (no `.env`, no config files with real tokens).
 - Store tokens in a **secret manager** (or at least environment variables on your server).
