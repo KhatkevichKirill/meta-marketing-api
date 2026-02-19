@@ -54,7 +54,7 @@ Meta requires your app to be associated with a Business Manager for some Busines
 
 ## 3) Add the App to your Business Manager (Business Settings)
 
-If your app is already in the Business Manager, you can just verify it in step 2.3.
+If your app is already in the Business Manager, you can just verify it appears in the list.
 
 1. Open Business Settings: `business.facebook.com/settings`
 2. Go to **Accounts** → **Apps** (menu names vary by UI locale/version)
