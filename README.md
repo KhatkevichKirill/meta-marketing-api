@@ -128,16 +128,28 @@ To avoid permission issues, assign the app itself to the System User.
 2. Select your System User
 3. Find the **Access Tokens** section
 4. Click **Generate New Token**
+   
+   ![Generate token](images/Generate_token.png)
+
 5. Select your **App**
-6. Select the assets (Ad Accounts / Page) when prompted
-7. Select permissions (scopes) for the token. Common choices:
+
+   ![Generate token - select app](images/Generate_token_Select_app.png)
+
+6. Set **Token expiry** to **Never**
+
+   ![Generate token - token expiry](images/Generate_token_Token_expiry.png)
+
+7. Select the assets (Ad Accounts / Page) when prompted
+8. Select permissions (scopes) for the token. Common choices:
    - `ads_management` (create/update campaigns, ad sets, ads)
    - `ads_read` (read/reporting)
-   - `business_management` (only if you truly need BM-level operations)
-8. Click **Generate Token**
-9. Copy the token and store it securely (password manager / secrets manager)
+   
+   ![Generate token - select permissions](images/Generate_token_Select_permissions.png)
 
-**Screenshot placeholder**: Generate token screen with selected app + scopes (token value blurred)
+9. Click **Generate Token**
+10. Copy the token and store it securely (password manager / secrets manager)
+
+> Note: Add `business_management` only if you truly need Business Manager–level operations.
 
 ---
 
@@ -155,13 +167,3 @@ Use Graph API Explorer:
 If `/me/adaccounts` returns the expected ad accounts, the setup is correct.
 
 **Screenshot placeholder**: Graph API Explorer request + successful response
-
----
-
-## 8) Production Checklist (recommended)
-
-- **Do not commit tokens** to Git (no `.env`, no config files with real tokens).
-- Store tokens in a **secret manager** (or at least environment variables on your server).
-- Prefer **least privilege**: grant only the assets/scopes you need.
-- Document token **rotation** and who can revoke/regenerate it.
-
